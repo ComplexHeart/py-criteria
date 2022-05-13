@@ -1,7 +1,7 @@
 [tool.poetry]
-name = "py-complexheart-criteria"
+name = "complexheart-criteria"
 version = "0.1.0"
-description = "Implementation of Criteria patterns in Python for Complex Heart SDK."
+description = "Small implementation of a filter criteria pattern in Python for Complex Heart SDK. Compose several filters using fluent interface."
 authors = [
     "Unay Santisteban <usantisteban@othercode.es>",
 ]
@@ -16,7 +16,6 @@ classifiers = [
     "Operating System :: POSIX :: Linux",
     "Programming Language :: Python :: 3.8",
     "Programming Language :: Python :: 3.9",
-    "Programming Language :: Python :: 3.10",
 ]
 keywords = [
     "specification-pattern",
