@@ -2,7 +2,8 @@
 # Criteria (a.k.a Filter)
 
 [![Test](https://github.com/ComplexHeart/py-criteria/actions/workflows/test.yml/badge.svg)](https://github.com/ComplexHeart/py-criteria/actions/workflows/test.yml)
-[![codecov](https://codecov.io/gh/ComplexHeart/py-criteria/branch/main/graph/badge.svg?token=B2V6kEdSDU)](https://codecov.io/gh/ComplexHeart/py-criteria)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=ComplexHeart_py-criteria&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=ComplexHeart_py-criteria)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=ComplexHeart_py-criteria&metric=coverage)](https://sonarcloud.io/summary/new_code?id=ComplexHeart_py-criteria)
 
 Small implementation of a filter criteria pattern in Python for Complex Heart SDK. Compose several filters using fluent
 interface.
