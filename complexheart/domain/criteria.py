@@ -1,8 +1,8 @@
 from __future__ import annotations
 
-from typing import Any, List, Optional, Union
 from dataclasses import dataclass
 from enum import Enum, unique
+from typing import Any
 
 
 @dataclass(frozen=True)
@@ -13,39 +13,39 @@ class Filter:
 
     @staticmethod
     def eq(field: str, value: Any) -> Filter:
-        return Filter(field, '==', value)
+        return Filter(field, "==", value)
 
     @staticmethod
     def neq(field: str, value: Any) -> Filter:
-        return Filter(field, '!=', value)
+        return Filter(field, "!=", value)
 
     @staticmethod
     def gt(field: str, value: Any) -> Filter:
-        return Filter(field, '>', value)
+        return Filter(field, ">", value)
 
     @staticmethod
     def gte(field: str, value: Any) -> Filter:
-        return Filter(field, '>=', value)
+        return Filter(field, ">=", value)
 
     @staticmethod
     def lt(field: str, value: Any) -> Filter:
-        return Filter(field, '<', value)
+        return Filter(field, "<", value)
 
     @staticmethod
     def lte(field: str, value: Any) -> Filter:
-        return Filter(field, '<=', value)
+        return Filter(field, "<=", value)
 
     @staticmethod
     def contains(field: str, value: Any) -> Filter:
-        return Filter(field, 'in', value)
+        return Filter(field, "in", value)
 
     @staticmethod
     def not_contains(field: str, value: Any) -> Filter:
-        return Filter(field, 'not in', value)
+        return Filter(field, "not in", value)
 
     @staticmethod
     def like(field: str, value: Any) -> Filter:
-        return Filter(field, 'like', value)
+        return Filter(field, "like", value)
 
     def __str__(self) -> str:
         return f"{self.field} {self.operator} {self.value}"
@@ -53,9 +53,9 @@ class Filter:
 
 @unique
 class OrderType(Enum):
-    ASC = 'ASC'
-    DESC = 'DESC'
-    NONE = 'NONE'
+    ASC = "ASC"
+    DESC = "DESC"
+    NONE = "NONE"
 
     def __str__(self) -> str:
         return self.value
@@ -63,15 +63,15 @@ class OrderType(Enum):
 
 @dataclass(frozen=True)
 class Order:
-    by: List[str]
+    by: list[str]
     type: OrderType = OrderType.ASC
 
     @staticmethod
-    def desc(by: List[str]) -> Order:
+    def desc(by: list[str]) -> Order:
         return Order(by, OrderType.DESC)
 
     @staticmethod
-    def asc(by: List[str]) -> Order:
+    def asc(by: list[str]) -> Order:
         return Order(by, OrderType.ASC)
 
     @staticmethod
@@ -93,10 +93,10 @@ class Page:
 
 class Criteria:
     def __init__(
-            self,
-            filters: Optional[List[Filter]] = None,
-            order: Optional[Order] = None,
-            page: Optional[Page] = None,
+        self,
+        filters: list[Filter] | None = None,
+        order: Order | None = None,
+        page: Page | None = None,
     ):
         self.filters = filters or []
         self.order = order or Order.none()
@@ -106,7 +106,7 @@ class Criteria:
         self.filters.append(Filter(field, operator, value))
         return self
 
-    def order_by(self, by: List[str], order: Union[OrderType, str] = OrderType.ASC) -> Criteria:
+    def order_by(self, by: list[str], order: OrderType | str = OrderType.ASC) -> Criteria:
         if not isinstance(order, OrderType):
             order = OrderType(order.upper())
 

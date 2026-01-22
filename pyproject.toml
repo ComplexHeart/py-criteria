@@ -1,60 +1,90 @@
-[tool.poetry]
+[project]
 name = "complexheart-criteria"
 version = "0.1.0"
 description = "Small implementation of a filter criteria pattern in Python for Complex Heart SDK. Compose several filters using fluent interface."
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.11"
 authors = [
-    "Unay Santisteban <usantisteban@othercode.es>",
-]
-license = "Apache-2.0"
-readme = "./README.md"
-repository = "https://github.com/ComplexHeart/py-criteria"
-packages = [
-    { include = "complexheart" },
-]
-classifiers = [
-    "Development Status :: 5 - Production/Stable",
-    "Operating System :: POSIX :: Linux",
-    "Programming Language :: Python :: 3.8",
-    "Programming Language :: Python :: 3.9",
+    { name = "Unay Santisteban", email = "usantisteban@othercode.es" }
 ]
 keywords = [
     "specification-pattern",
     "criteria",
 ]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Software Development :: Libraries",
+    "Typing :: Typed",
+]
 
-[tool.poetry.dependencies]
-python = "^3.8"
+dependencies = []
 
-[tool.poetry.dev-dependencies]
-flake8 = "^4.0.1"
-coverage = { extras = ["toml"], version = "^6.3.1" }
-pytest = "^6.2.5"
-pytest-cov = "^3.0.0"
-pytest-mock = "^3.7.0"
+[project.urls]
+Homepage = "https://github.com/ComplexHeart/py-criteria"
+Repository = "https://github.com/ComplexHeart/py-criteria.git"
+Issues = "https://github.com/ComplexHeart/py-criteria/issues"
 
 [build-system]
-requires = ["poetry-core>=1.0.0", "setuptools>=42"]
-build-backend = "poetry.core.masonry.api"
+requires = ["setuptools>=70.0.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["complexheart*"]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0.0",
+    "pytest-cov>=6.0.0",
+    "pytest-mock>=3.14.0",
+    "ruff>=0.9.0",
+    "mypy>=1.0.0",
+]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 120
+indent-width = 4
+exclude = [
+    ".eggs",
+    ".git",
+    ".pytest_cache",
+    ".ruff_cache",
+    ".venv",
+    "build",
+    "dist",
+]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM", "RUF"]
 
 [tool.pytest.ini_options]
-testpaths = "tests"
-addopts = "--cov=complexheart --cov-report=term-missing:skip-covered --cov-report=html --cov-report=xml"
+testpaths = ["tests"]
+addopts = "--cov=complexheart --cov-report=term-missing --cov-report=xml"
 
 [tool.coverage.run]
-omit = ["tests/*", "venv*/*", "setup.py"]
-relative_files = true
 branch = true
+source = ["complexheart"]
 
 [tool.coverage.report]
 exclude_lines = [
     "pragma: no cover",
-    "def __str__",
+    "pragma: no branch",
+    "if TYPE_CHECKING:",
     "def __repr__",
-    "import",
     "raise NotImplementedError",
-    "if __name__ == .__main__.:",
 ]
 
-[tool.coverage.html]
-skip_covered = true
-
+[tool.mypy]
+python_version = "3.11"
+strict = false
+warn_return_any = true
+warn_unused_ignores = true
+disallow_untyped_defs = false
