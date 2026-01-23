@@ -10,21 +10,21 @@ interface.
 
 ## Installation
 
-Just install the package from PyPI using pip:
+Install the package from PyPI using pip:
 
 ```bash
-pip install complexheart-criteria
+pip install complex-heart-criteria
 ```
 
-or using poetry:
+or using uv:
 
 ```bash
-poetry add complexheart-criteria
+uv add complex-heart-criteria
 ```
 
 ## Usage
 
-Just import the package and use the `Criteria` class:
+Import the package and use the `Criteria` class:
 
 ```python
 from complexheart.domain.criteria import Criteria, Filter, Order, Page

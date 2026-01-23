@@ -1,5 +1,5 @@
 [project]
-name = "complexheart-criteria"
+name = "complex-heart-criteria"
 version = "0.1.0"
 description = "Small implementation of a filter criteria pattern in Python for Complex Heart SDK. Compose several filters using fluent interface."
 readme = "README.md"
@@ -37,7 +37,7 @@ requires = ["setuptools>=70.0.0"]
 build-backend = "setuptools.build_meta"
 
 [tool.setuptools.packages.find]
-include = ["complexheart*"]
+where = ["src"]
 
 [dependency-groups]
 dev = [
@@ -66,12 +66,13 @@ exclude = [
 select = ["E", "F", "I", "UP", "B", "SIM", "RUF"]
 
 [tool.pytest.ini_options]
+pythonpath = [".", "src"]
 testpaths = ["tests"]
 addopts = "--cov=complexheart --cov-report=term-missing --cov-report=xml"
 
 [tool.coverage.run]
 branch = true
-source = ["complexheart"]
+source = ["src/complexheart"]
 
 [tool.coverage.report]
 exclude_lines = [
