@@ -3,7 +3,7 @@ name = "complex-heart-criteria"
 version = "0.1.0"
 description = "Small implementation of a filter criteria pattern in Python for Complex Heart SDK. Compose several filters using fluent interface."
 readme = "README.md"
-license = { text = "MIT" }
+license = "MIT"
 requires-python = ">=3.11"
 authors = [
     { name = "Unay Santisteban", email = "usantisteban@othercode.es" }
@@ -15,7 +15,6 @@ keywords = [
 classifiers = [
     "Development Status :: 5 - Production/Stable",
     "Intended Audience :: Developers",
-    "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.11",
